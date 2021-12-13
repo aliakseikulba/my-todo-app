@@ -30,7 +30,7 @@ type TasksAT = RemoveTaskAT | AddTaskAT | ChangeTasksStatusAT | ChangeTaskTitleA
 export const tasksReducer = (state: TasksStateType, action: TasksAT) => {
   switch (action.type) {
     case 'ADD-TODOLIST': {
-      return {...state, [v1()]: []}
+      return {...state, [action.todoListID]: []}
     }
 
     case 'REMOVE-TASK': {
