@@ -55,7 +55,7 @@ export const addTodoListAC = (title: string): AddTodoListAT => {
   return {type: 'ADD-TODOLIST', todoListID: v1(), title};
 };
 
-export const changeTodoListTitleAC = (title: string, todoListID: string): ChangeTodoListTitleAT => {
+export const changeTodoListTitleAC = (todoListID: string, title: string): ChangeTodoListTitleAT => {
   return {type: 'CHANGE-TODOLIST-TITLE', todoListID, title};
 };
 

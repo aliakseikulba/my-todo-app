@@ -24,9 +24,7 @@ const AddItemForm = ({addItem}: AddItemFormPropsType) => {
     setNewTaskTitle(e.currentTarget.value);
   };
   const onEnterPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    {
-      (e.key === 'Enter') && addNewTask();
-    }
+    (e.key === 'Enter') && addNewTask();
   };
 
   return (
@@ -40,7 +38,7 @@ const AddItemForm = ({addItem}: AddItemFormPropsType) => {
                  error={error}
                  sx={{width: '160px'}}/>
       <IconButton onClick={addNewTask}
-      sx={{padding: '2px'}}>
+                  sx={{padding: '2px'}}>
         <AddCircleOutlineIcon color="primary"/>
       </IconButton>
     </div>
