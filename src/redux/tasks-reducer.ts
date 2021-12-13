@@ -17,8 +17,14 @@ type ChangeTasksStatusAT = {
   status: boolean
   todoListID: string
 }
+type ChangeTaskTitleAT = {
+  type: 'CHANGE-TASK-TITLE'
+  taskID: string
+  title: string
+  todoListID: string
+}
 
-type TasksAT = RemoveTaskAT | AddTaskAT | ChangeTasksStatusAT
+type TasksAT = RemoveTaskAT | AddTaskAT | ChangeTasksStatusAT | ChangeTaskTitleAT
 
 export const tasksReducer = (state: TasksStateType, action: TasksAT) => {
   switch (action.type) {
@@ -42,6 +48,13 @@ export const tasksReducer = (state: TasksStateType, action: TasksAT) => {
           .map(t => t.id === action.taskID ? {...t, isDone: action.status} : t)
       };
     }
+    case 'CHANGE-TASK-TITLE': {
+      return {
+        ...state,
+        [action.todoListID]: state[action.todoListID]
+          .map(t => t.id === action.taskID ? {...t, title: action.title} : t)
+      };
+    }
 
     default:
       return state;
@@ -58,4 +71,8 @@ export const addTaskAC = (taskTitle: string, todoListID: string): AddTaskAT => {
 
 export const changeTaskStatusAC = (taskID: string, status: boolean, todoListID: string): ChangeTasksStatusAT => {
   return {type: 'CHANGE-TASK-STATUS', taskID, status, todoListID};
+};
+
+export const changeTaskTitleAC = (taskID: string, title: string, todoListID: string): ChangeTaskTitleAT => {
+  return {type: 'CHANGE-TASK-TITLE', taskID, title, todoListID};
 };
