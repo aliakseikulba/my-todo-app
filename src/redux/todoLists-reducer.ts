@@ -21,9 +21,12 @@ export type ChangeTodoListFilterAT = {
   todoListID: string
   filter: FilterType
 }
-export type ActionType = RemoveTodoListAT | AddTodoListAT | ChangeTodoListTitleAT | ChangeTodoListFilterAT
+type TodoListsReducerAT = RemoveTodoListAT
+  | AddTodoListAT
+  | ChangeTodoListTitleAT
+  | ChangeTodoListFilterAT
 
-export const todoListsReducer = (todoLists: Array<TodoListType>, action: ActionType): Array<TodoListType> => {
+export const todoListsReducer = (todoLists: Array<TodoListType>, action: TodoListsReducerAT): Array<TodoListType> => {
   switch (action.type) {
     case 'REMOVE-TODOLIST':
       return todoLists.filter(tl => tl.id !== action.todoListID);
