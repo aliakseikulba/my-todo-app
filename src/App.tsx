@@ -70,7 +70,7 @@ const App = () => {
               spacing={4}>
           {todoLists.map(tl => {
             return (
-              <Grid item key={tl.id}>
+              <Grid item>
                 <Paper elevation={8} sx={{padding: '20px'}}>
                   <Todolist
                     key={tl.id}
