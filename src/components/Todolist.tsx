@@ -33,7 +33,7 @@ const Todolist = (props: TodolistPropsType) => {
     changeTodoListTitle
   } = props;
 
-  const tasks = useSelector<RootStateType, Array<TaskType>>(state => state.tasksReducer[todoListID]);
+  const tasks = useSelector<RootStateType, Array<TaskType>>(state => state.tasks[todoListID]);
   const dispatch = useDispatch();
 
   const removeTodo = () => {

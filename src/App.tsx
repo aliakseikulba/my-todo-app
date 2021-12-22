@@ -26,7 +26,7 @@ export type TasksStateType = {
 
 const App = () => {
 
-  const todoLists = useSelector<RootStateType, Array<TodoListType>>(state => state.todoListsReducer);
+  const todoLists = useSelector<RootStateType, Array<TodoListType>>(state => state.todoLists);
   const dispatch = useDispatch();
 
   const removeTodoList = (todoListID: string) => {
