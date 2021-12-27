@@ -24,6 +24,7 @@ export type TodolistPropsType = {
 }
 
 const Todolist = (props: TodolistPropsType) => {
+  console.log('Todolist');
   const {
     title,
     changeFilter,
