@@ -29,19 +29,19 @@ const App = () => {
   const todoLists = useSelector<RootStateType, Array<TodoListType>>(state => state.todoLists);
   const dispatch = useDispatch();
 
-  const removeTodoList = (todoListID: string) => {
+  const removeTodoList = useCallback((todoListID: string) => {
     dispatch(removeTodoListAC(todoListID));
-  };
+  }, [dispatch]);
   const addTodoList = useCallback((title: string) => {
     const action = addTodoListAC(title);
     dispatch(action);
-  }, [dispatch])
-  const changeTodoListTitle = (todoListID: string, newTitle: string) => {
+  }, [dispatch]);
+  const changeTodoListTitle = useCallback((todoListID: string, newTitle: string) => {
     dispatch(changeTodoListTitleAC(todoListID, newTitle));
-  };
-  const changeFilter = (filterValue: FilterType, todoListID: string) => {
+  }, [dispatch]);
+  const changeFilter = useCallback((filterValue: FilterType, todoListID: string) => {
     dispatch(changeTodoListFilterAC(todoListID, filterValue));
-  };
+  }, [dispatch]);
 
   return (
     <div className="App">

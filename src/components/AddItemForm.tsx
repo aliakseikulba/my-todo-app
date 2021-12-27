@@ -3,7 +3,7 @@ import {IconButton, TextField} from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 type AddItemFormPropsType = {
-  addItem: (newTaskTitle: string) => void
+  addItem: (newTitle: string) => void
 }
 
 const AddItemForm = React.memo(({addItem}: AddItemFormPropsType) => {

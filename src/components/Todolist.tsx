@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useCallback} from 'react';
 import {FilterType} from '../App';
 import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
@@ -23,7 +23,7 @@ export type TodolistPropsType = {
   changeTodoListTitle: (newTitle: string, todoListID: string) => void
 }
 
-const Todolist = (props: TodolistPropsType) => {
+const Todolist = React.memo((props: TodolistPropsType) => {
   console.log('Todolist');
   const {
     title,
@@ -52,6 +52,8 @@ const Todolist = (props: TodolistPropsType) => {
     tasksForTodolist = tasks.filter(t => t.isDone);
   }
 
+  const addTask = useCallback((title: string) => dispatch(addTaskAC(title, todoListID)), [dispatch, todoListID]);
+
   const setAll = () => changeFilter('all', todoListID);
   const setActive = () => changeFilter('active', todoListID);
   const setCompleted = () => changeFilter('completed', todoListID);
@@ -68,7 +70,7 @@ const Todolist = (props: TodolistPropsType) => {
             </IconButton>
           </div>
         </h3>
-        <AddItemForm addItem={(title) => dispatch(addTaskAC(title, todoListID))}/>
+        <AddItemForm addItem={addTask}/>
       </div>
       <div className={'todoListTasks'}>
         {
@@ -121,6 +123,6 @@ const Todolist = (props: TodolistPropsType) => {
       </div>
     </div>
   );
-};
+});
 
 export {Todolist};
