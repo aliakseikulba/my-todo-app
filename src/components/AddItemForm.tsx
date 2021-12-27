@@ -7,7 +7,6 @@ type AddItemFormPropsType = {
 }
 
 const AddItemForm = React.memo(({addItem}: AddItemFormPropsType) => {
-  console.log('AddItemForm');
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
 
