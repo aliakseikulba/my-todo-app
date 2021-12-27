@@ -43,13 +43,12 @@ const Todolist = (props: TodolistPropsType) => {
     changeTodoListTitle(todoListID, newTitle);
   };
 
-  const allTasks = tasks;
-  let tasksForTodolist = allTasks;
+  let tasksForTodolist = tasks;
   if (filter === 'active') {
-    tasksForTodolist = allTasks.filter(t => !t.isDone);
+    tasksForTodolist = tasks.filter(t => !t.isDone);
   }
   if (filter === 'completed') {
-    tasksForTodolist = allTasks.filter(t => t.isDone);
+    tasksForTodolist = tasks.filter(t => t.isDone);
   }
 
   const setAll = () => changeFilter('all', todoListID);

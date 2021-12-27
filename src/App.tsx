@@ -57,7 +57,7 @@ const App = () => {
             <MenuIcon/>
           </IconButton>
           <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-            TodoLists
+            TodoList
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
@@ -70,10 +70,9 @@ const App = () => {
               spacing={4}>
           {todoLists.map(tl => {
             return (
-              <Grid item>
+              <Grid item key={tl.id}>
                 <Paper elevation={8} sx={{padding: '20px'}}>
                   <Todolist
-                    key={tl.id}
                     todoListID={tl.id}
                     title={tl.title}
                     changeFilter={changeFilter}
